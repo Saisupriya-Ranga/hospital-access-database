@@ -42,7 +42,7 @@ uninsured populations.
 
 ## Tools & Technologies
 - MySQL
-- SQL Server Management Studio (SSMS)
+- MySQL Workbench
 - ERD Design (Lucidchart)
 - Query Optimization (EXPLAIN plans, SHOW PROFILE)
 
