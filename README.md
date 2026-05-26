@@ -28,9 +28,9 @@ uninsured populations.
 ## Database Design
 
 ### Entities
-- **Hospital** — HospitalId (PK), Name, Address, Lat, Long, Status
-- **County** — CountyId (PK), Name, TotalPopulation, PovertyRate, UninsuredRate, Latitude, Longitude
-- **Hospital_County_Distance** — Bridge table (HospitalId FK, CountyId FK, Distance_Miles)
+- **Hospital** — HospitalId (PK), Name, Address, City, State, Latitude, Longitude, Type, Beds, EmergencyServices, Ownership, Status, Zipcode
+- **County** — CountyId (PK), Name, State, TotalPopulation, PovertyRate, Unemployment, Latitude, Longitude
+- **Hospital_County_Distance** — Hospital_County_Distance_Id (PK), HospitalId (FK), CountyId (FK), Hospital_County_Distance_Miles
 
 ### Normalization
 - **3NF compliant** — eliminated all redundancy and update anomalies
@@ -138,3 +138,16 @@ GRANT ALL PRIVILEGES ON hospital_access.* TO 'admin'@'localhost';
 | `County_Centroids_data.csv` | County geographic coordinates |
 | `Hospital_General_Information.csv` | Hospital details dataset |
 | `hospital_locations.csv` | Hospital location data |
+| `erd_diagram.png` | Entity Relationship Diagram |
+
+## Lessons Learned
+- Finding reliable and joinable datasets was the most challenging 
+  part of the project — many datasets required significant cleaning 
+  before use
+- Designing the M:N relationship between Hospital and County 
+  clarified the need for a bridge table (Hospital_County_Distance)
+- Used Copilot to debug INSERT INTO...SELECT foreign key constraint 
+  errors and to understand the difference between creating indexes 
+  physically vs forcing index usage in queries
+- Iterative design approach — revised ERD and queries multiple times 
+  until they clearly addressed the real-world problem
